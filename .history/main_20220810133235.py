@@ -1,4 +1,3 @@
-from email.mime import base
 import os
 from github import Github
 import subprocess
@@ -25,9 +24,11 @@ def create_remote_repo(token, repo_name, base_working_dir):
     subprocess.call(['git', 'branch', '-M', 'main'])
     subprocess.call(['git', 'remote', 'add', 'origin', '{}'.format(repo_url)])
     subprocess.call(['git', 'push', '-u', 'origin', 'main'])
+    os.chdir()
+
 
 os.chdir(os.path.join(os.getcwd(), "testDir"))
-base_working_dir = os.path.join(os.getcwd())
+baseWorkingDir = os.path.join(os.getcwd(), "testDir")
 
 dics = get_dics()
 
@@ -51,4 +52,4 @@ if operation == "1":
 
 if operation == "2":
     for dic in dics:
-        create_remote_repo(token, dic, base_working_dir)
+        create_remote_repo(token, dic)

@@ -25,6 +25,8 @@ def create_remote_repo(token, repo_name, base_working_dir):
     subprocess.call(['git', 'branch', '-M', 'main'])
     subprocess.call(['git', 'remote', 'add', 'origin', '{}'.format(repo_url)])
     subprocess.call(['git', 'push', '-u', 'origin', 'main'])
+    os.chdir()
+
 
 os.chdir(os.path.join(os.getcwd(), "testDir"))
 base_working_dir = os.path.join(os.getcwd())
