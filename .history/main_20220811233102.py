@@ -5,11 +5,11 @@ import subprocess
 from configparser import ConfigParser
 
 def readConfig():
+    file = "config.ini"
     config = ConfigParser()
-    path = '/'.join((os.path.abspath(__file__).replace('\\', '/')).split('/')[:-1])
-    config.read(os.path.join(path, 'config.ini'))
+    config.read(file)
 
-    return config["accessToken"]["token"]
+    return config["GitHub API"]["token"]
 
 
 def get_dics():
@@ -55,7 +55,7 @@ if operation == "1":
 
     print("\nSelected Repository: " + dic, "\n")
 
-    create_remote_repo(token, dic, base_working_dir)
+    create_remote_repo(token, dic)
 
 if operation == "2":
     for dic in dics:

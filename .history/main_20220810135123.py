@@ -1,15 +1,8 @@
 from email.mime import base
 import os
+import stat
 from github import Github
 import subprocess
-from configparser import ConfigParser
-
-def readConfig():
-    config = ConfigParser()
-    path = '/'.join((os.path.abspath(__file__).replace('\\', '/')).split('/')[:-1])
-    config.read(os.path.join(path, 'config.ini'))
-
-    return config["accessToken"]["token"]
 
 
 def get_dics():
@@ -36,6 +29,7 @@ def create_remote_repo(token, repo_name, base_working_dir):
 
 
 base_working_dir = os.path.join(os.getcwd())
+os.chmod(base_working_dir, stat.S_IRWXU|stat.S_IRWXG|stat.S_IRWXO)
 
 dics = get_dics()
 
@@ -43,7 +37,7 @@ operation = input(
     "1. Single Repository\n2. All Repositories\nEnter your choice: ")
 print()
 
-token = readConfig()
+token = input("Enter Github Token: ")
 
 if operation == "1":
 
@@ -55,7 +49,7 @@ if operation == "1":
 
     print("\nSelected Repository: " + dic, "\n")
 
-    create_remote_repo(token, dic, base_working_dir)
+    create_remote_repo(token, dic)
 
 if operation == "2":
     for dic in dics:
