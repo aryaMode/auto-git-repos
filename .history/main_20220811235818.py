@@ -4,7 +4,7 @@ import subprocess
 from configparser import ConfigParser
 
 # TODO: Make a working GUI with Kivy
-# • Goal is to use OOP to create a GUI for this script
+# • Goal is to use O
 # TODO: Make this a package and distribute
 
 def readConfig():
