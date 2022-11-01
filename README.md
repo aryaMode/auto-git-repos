@@ -1,6 +1,6 @@
 # auto-git-repos
 
-Hey, this Python program creates remote repositories in GitHub and uploads your local directory to that repo.
+Hey, this Python program creates remote repositories in GitHub and uploads your local directory to those repos.
 
 ## How to use it
 1. Generate an [access token](https://github.com/settings/tokens) and copy it.
